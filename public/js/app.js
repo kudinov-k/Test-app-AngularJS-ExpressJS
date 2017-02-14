@@ -14,6 +14,8 @@ app.controller('mainCtrl', function ($scope, $http) {
     }
 
     $scope.findingoogle = function () {
+        if (!$scope.search_text)
+            return;
         var data = {search_text: $scope.search_text};
         $http.post('/googleget', data).then(function (response) {
             $scope.links = response.data;
